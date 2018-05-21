@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ca">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="Carles Canellas" >
+		<title>Fitxa personal</title>
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+		<link href="css/starter-template.css" rel="stylesheet">
+		<link rel="stylesheet" href="css/styles.css">
+		<link rel="stylesheet" href="css/fitxa.css">
+		<link rel="stylesheet" media="print" href="css/print.css">
+		<!-- Material icons font -->
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--offline detector-->
+    <script src="js/offline.min.js"></script>
+    <link href="css/offline-theme-slide.css" rel="stylesheet">
+    <link href="css/offline-language-catalan.css" rel="stylesheet">
+    <link href="css/offline-language-catalan-indicator.css" rel="stylesheet">
+	</head>
+	<body>
+  	<nav id="main"></nav>
+  	<div class="controls link">
+  		<i class="material-icons md-24 print" title="crear pdf" onclick="print()">print</i>
+	  	<i class="material-icons md-24 print" title="desar full de càlcul" onclick="xls()">insert_chart</i>
+  	</div>
+		<div class="container">
+			<h1>Nom i cognoms</h1>
+		</div>
+		<div class="container seccio rounded" id="dades-personals">
+			<h3>Dades personals</h3>
+			<div class=""> <!--Bàsiques-->
+				<label for="nom">Nom</label><input class="nom" type="text" placeholder="Nom" id="nom" onchange="changeNom(this)" required="true">
+				<label class="left-sm" for="cognoms">Cognoms</label><input class="cognoms" type="text" placeholder="Cognoms" id="cognoms" onchange="changeNom(this)" required="true">
+				<label class="left-md" for="malnom">Malnom</label><input type="text" placeholder="Malnom" id="malnom" onchange="changeSimple(this,'malnom')">
+				<label class="left-md" for="edat">Edat</label><input type="number" placeholder="Edat" id="edat" onchange="changeSimple(this,'edat')">
+			</div>
+			<div class="">
+				<label>Naixement:</label>
+				<label class="left-sm" for="lloc-naixement">lloc</label>
+				<select id="lloc-naixement" onchange="changeSelect(this,'llocNaixement','Municipi')">
+					<option>Artés</option>
+				</select>
+				<i class="material-icons md-18 link" title="editar" onclick="obrirPagina('municipis.php')">mode_edit</i>
+				<label class="left-sm" for="data-naixement">data</label>
+				<input type="date" id="data-naixement" onchange="changeSimple(this,'dataNaixement')" oninput="changeSimple(this,'dataNaixement')">
+				<label class="left-sm" for="carrer">adreça</label>
+				<select id="carrer" onchange="changeSelect(this,'carrer','Carrer')">
+					<option>Rocafort</option>
+				</select>
+				<i class="material-icons md-18 link" title="editar" onclick="obrirPagina('carrers.php')">mode_edit</i>
+				<label class="left-sm" for="num-carrer">núm</label>
+				<input type="number" placeholder="Num" id="num-carrer" onchange="changeSimple(this,'numCarrer')">
+			</div>
+			<div class="">
+				<label>Mort:</label>
+				<label class="left-sm" for="lloc-mort">lloc</label>
+				<select id="lloc-mort" onchange="changeSelect(this,'llocMort','Municipi')">
+					<option>Artés</option>
+				</select>
+				<i class="material-icons md-18 link" title="editar" onclick="obrirPagina('municipis.php')">mode_edit</i>
+				<label class="left-sm" for="data-mort">data</label>
+				<input type="date" id="data-mort" onchange="changeSimple(this,'dataMort')" oninput="changeSimple(this,'dataMort')">
+				<label class="left-sm" for="data-defuncio">data registre</label>
+				<input type="date" id="data-defuncio" onchange="changeSimple(this,'dataDefuncio')" oninput="changeSimple(this,'dataDefuncio')">
+			</div>
+			<div class=""> <!--Familiars-->
+				<div class="inline"> <!--parella-->
+					<label for="parella">Parella</label>
+					<i class="material-icons md-18 link" onclick="addElement(this,'parelles','parelles',true)">add_circle</i>
+					<div class="inline-table" id="parelles-container" entity="Persona">
+						<div class="hidden" id="parelles">
+				    	<select value="" onchange="changeLinkedEntity(this,'parelles','Persona')">
+				    		<option></option>
+				    	</select>
+				    	<i class="material-icons md-18 link" title="editar" onclick="editarFitxa(this)">mode_edit</i>
+				    	<i class="material-icons md-18 link" title="eliminar" onclick="removeElement(this,'parelles','Persona')">remove_circle</i>
+		  			</div>
+					</div>
+				</div>
+				<div class="inline left-md"> <!--fills-->
+					<label>Fills</label>
+					<i class="material-icons md-18 link" onclick="addElement(this,'fills','fills',true)">add_circle</i>
+					<div class="inline-table" id="fills-container" entity="Persona">
+						<div class="hidden" id="fills">
+				    	<select onchange="changeLinkedEntity(this,'fills','Persona')" linkedProperty="fills" linkedEntity="Persona" exclusive="true">
+				    		<option></option>
+				    	</select>
+				    	<i class="material-icons md-18 link" title="editar" onclick="editarFitxa(this)">mode_edit</i>
+				    	<i class="material-icons md-18 link" title="eliminar" onclick="removeElement(this,'fills','Persona')">remove_circle</i>
+		  			</div>
+					</div>
+				</div>
+				<div class="inline left-md"> <!--oficis-->
+					<label>Professió</label><i class="material-icons md-18 link" onclick="addElement(this,'oficis','oficis',true)">add_circle</i>
+					<div class="inline-table" id="oficis-container" entity="Persona">
+						<div class="hidden" id="oficis">
+				    	<select onchange="changeLinkedEntity(this,'oficis','Ofici')" exclusive="true" linkedProperty="oficis" linkedEntity="Ofici">
+				    		<option></option>
+				    	</select>
+				    	<i class="material-icons md-18 link" title="editar" onclick="obrirPagina('oficis.php')">mode_edit</i>
+				    	<i class="material-icons md-18 link" title="eliminar" onclick="removeElement(this,'oficis','Ofici')">remove_circle</i>
+		  			</div>
+					</div>
+				</div>
+			</div>
+			<div class="">
+				<label for="observacions">Observacions:</label>
+				<textarea class="observacions" id="observacions" onchange="changeSimple(this,'observacions')"></textarea>
+			</div>
+		</div>
+		<div class="container seccio rounded" id="situacio-politica">
+			<h3>Situació política i militar</h3>
+			<div class="">
+				<label>Tipus</label>
+				<select id="tipus-situacio" value="1" onchange="changeSelect(this,'tipusSituacio','TipusSituacio')">
+					<option>Represaliat pel franquisme</option>
+				</select>
+				<i class="material-icons md-18 link" title="editar" onclick="obrirPagina('tipussituacio.php')">mode_edit</i>
+				<label class="left-sm" for="cg">Causa General</label>
+				<input type="checkbox" id="cg" onchange="changeSimple(this,'cg')">
+				<label class="left-sm">Sumari</label><input type="checkbox" id="has-sumari" onchange="commutarAndChangeSimple(this,'hasSumari','sumari','block')">
+				<label class="left-md" for="cg">Fets d'octubre</label>
+				<input type="checkbox" id="fets-octubre" onchange="changeSimple(this,'fetsOctubre')">
+				<select id="font-fets-octubre" title="Font" onchange="changeSelect(this,'fontFetsOctubre','Font')">
+					<option>Sumari</option>
+				</select>
+				<i class="material-icons md-18 link" title="editar" onclick="obrirPagina('fonts.php')">mode_edit</i>
+			</div>
+			<div class=""> <!--Afiliacions-->
+				<label>Afiliació política</label>
+				<i class="material-icons md-18 link" onclick="addElement(this,'partits','partits',true)">add_circle</i>
+				<div class="inline-table" id="partits-container">
+					<div class="hidden" id="partits">
+			    	<select value="1" onchange="changeLinkedEntity(this,'partits','Partit')">
+			    		<option></option>
+			    	</select>
+			    	<i class="material-icons md-18 link" title="editar" onclick="obrirPagina('partits.php')">mode_edit</i>
+			    	<i class="material-icons md-18 link" title="eliminar" onclick="removeElement(this,'partits','Partit')">remove_circle</i>
+	  			</div>
+				</div>
+				<label class="left-sm">Afiliació sindical</label>
+				<i class="material-icons md-18 link" onclick="addElement(this,'sindicats','sindicats',true)">add_circle</i>
+				<div class="inline-table" id="sindicats-container">
+					<div class="hidden" id="sindicats">
+			    	<select value="1" onchange="changeLinkedEntity(this,'sindicats','Sindicat')">
+			    		<option></option>
+			    	</select>
+			    	<i class="material-icons md-18 link" title="editar" onclick="obrirPagina('sindicats.php')">mode_edit</i>
+			    	<i class="material-icons md-18 link" title="eliminar" onclick="removeElement(this,'sindicats','Sindicat')">remove_circle</i>
+	  			</div>
+				</div>
+			</div>
+			<div class="">
+<!--				<label>Comitè</label><input type="checkbox" id="comite" onchange="changeSimple(this,'comite')">-->
+				<div class=""> <!--Comitès-->
+					<div class="inline">
+						<label>Comitès</label>
+						<i class="material-icons md-18 link" onclick="addElement(this,'comites','comites',true)">add_circle</i>
+						<div class="inline-table" id="comites-container">
+							<div class="hidden" id="comites" exclusive="false">
+					    	<select class="comites" value="1" onchange="changeSelectGeneric(this,'comite','Comite','MembreComite')">
+					    		<option>Comitè</option>
+					    	</select>
+					    	<i class="material-icons md-18 link" title="editar" onclick="obrirPagina('comites.php')">mode_edit</i>
+							<label for="causa">Causa</label><input type="text" placeholder="Causa o raó" id="causa" onchange="changeSimpleGeneric(this,'causa','MembreComite')">
+					    	<label class="left-sm">Afil. política i sindical</label>
+					    	<select class="partits" value="1" onchange="changeSelectGeneric(this,'partit','Partit','MembreComite')">
+					    		<option>Partit</option>
+					    	</select>
+					    	<i class="material-icons md-18 link" title="editar" onclick="obrirPagina('partits.php')">mode_edit</i>
+					    	<select class="sindicats" value="1" onchange="changeSelectGeneric(this,'sindicat','Sindicat','MembreComite')">
+					    		<option>Sindicat</option>
+					    	</select>
+					    	<i class="material-icons md-18 link" title="editar" onclick="obrirPagina('partits.php')">mode_edit</i>
+					    	<i class="material-icons md-18 link" title="eliminar" onclick="removeElement(this,'comites','MembreComite')">remove_circle</i>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="">
+					<label>Ajuntament</label>
+					<i class="material-icons md-18 link" onclick="addElement(this,'dates-ajuntament','datesAjuntament',true)" id="add-dates-ajuntament">add_circle</i>
+					<div class="inline-table" id="dates-ajuntament-container">
+						<div id="datesAjuntament" class="hidden">
+			    		<label>de</label><input type="date" onchange="changeSimpleGeneric(this,'dataInici','RangDates')" oninput="changeSimpleGeneric(this,'dataInici','RangDates')">
+			    		<label class="left-sm">a</label><input type="date" onchange="changeSimpleGeneric(this,'dataFi','RangDates')" oninput="changeSimpleGeneric(this,'dataFi','RangDates')">
+				    	<i class="material-icons md-18 link" title="eliminar" onclick="removeElement(this,'datesAjuntament','RangDates')">remove_circle</i>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class=""> <!--Exili-->
+				<label>Exiliat</label><input type="checkbox" id="exiliat" onchange="commutarAndChangeSimple(this,'exiliat','exili')">
+				<div class="inline hidden" id="exili">
+					<label class="left-sm">Destí final</label>
+					<select id="desti-final" onchange="changeSelect(this,'destiFinal','Pais')">
+						<option>Espanya</option>
+					</select>
+					<i class="material-icons md-18 link" title="editar" onclick="obrirPagina('paisos.php')">mode_edit</i>
+					<select id="lloc-desti-final" onchange="changeSelect(this,'llocDestiFinal','Municipi')">
+						<option>Artés</option>
+					</select>
+					<i class="material-icons md-18 link" title="editar" onclick="obrirPagina('municipis.php')">mode_edit</i>
+					<label class="left-sm">Estat militar</label>
+					<select id="estat-militar" onchange="changeSelect(this,'estatMilitar','EstatMilitar')">
+						<option>Camp de concentració</option>
+					</select>
+					<i class="material-icons md-18 link" title="editar" onclick="obrirPagina('estatsmilitars.php')">mode_edit</i>
+					<select id="desti-estat-militar" onchange="changeSelect(this,'destiEstatMilitar','DestiEstatMilitar')">
+						<option>Horta</option>
+					</select>
+					<i class="material-icons md-18 link" title="editar" onclick="obrirPagina('destinsestatmilitar.php')">mode_edit</i>
+					<input type="date" id="data-estat-militar" title="Data" onchange="changeSimple(this,'dataEstatMilitar')" oninput="changeSimple(this,'dataEstatMilitar')">
+				</div>
+			</div>
+			<div class=""> <!-- Tribunal de responsabilitats polítiques -->
+				<label>TRRP</label><input type="checkbox" id="trp" onchange="commutarAndChangeSimple(this,'trp','tribunalrp')">
+				<div class="inline hidden" id="tribunalrp">
+					<input type="date" id="data-trp" title="Data" onchange="changeSimple(this,'dataTrp')" oninput="changeSimple(this,'dataTrp')">
+					<label class="left-sm">Font</label>
+					<select id="font-trp" onchange="changeSelect(this,'fontTrp','Font')">
+						<option>Sumari</option>
+					</select>
+					<i class="material-icons md-18 link" title="editar" onclick="obrirPagina('fonts.php')">mode_edit</i>
+					<label class="left-sm">Capsa:</label><input class="capsa" type="text" id="capsa-trp" placeholder="00000" onchange="changeSimple(this,'capsaTrp')">
+				</div>
+			</div>
+			<div class="">
+				<label for="observacions-situacio">Observacions:</label>
+				<textarea class="observacions" id="observacions-situacio" onchange="changeSimple(this,'observacionsSituacio')"></textarea>
+			</div>
+		</div>
+		<div class="container seccio rounded hidden" id="sumari">
+			<h3>Sumari</h3>
+			<a href="files/sumaris/sumari-00500.pdf" target="_blank" class="hidden"><i class="material-icons link add" title="Veure sumari">attachment</i></a>
+			<div class="">
+				<label for="num-sumari">Número</label><input type="number" id="num-sumari" onchange="changeSimpleSumari(this,'numSumari')">
+				<label class="left-sm" for="data-inici">Data inici</label>
+				<input type="date" id="data-inici" onchange="changeSimpleSumari(this,'dataInici')" oninput="changeSimpleSumari(this,'dataInici')">
+				<label class="left-md">Detenció</label>
+				<select id="lloc-detencio" onchange="changeSelectSumari(this,'llocDetencio','Municipi')">
+					<option>Artés</option>
+				</select>
+				<i class="material-icons md-18 link" title="editar" onclick="obrirPagina('municipis.php')">mode_edit</i>
+				<input type="date" id="data-detencio" title="Data" onchange="changeSimpleSumari(this,'dataDetencio')" oninput="changeSimpleSumari(this,'dataDetencio')">
+			</div>
+			<div class=""> <!--Acusació-->
+				<label for="acusacio">Acusació</label>
+				<select id="acusacio" onchange="changeSelectSumari(this,'acusacio','Acusacio')">
+					<option>Rebel·lió Militar</option>
+				</select>
+				<i class="material-icons md-18 link" title="editar" onclick="obrirPagina('acusacions.php')">mode_edit</i>
+			</div>
+			<div class=""> <!--Consell de guerra-->
+				<label>Consell de guerra</label>
+				<input type="checkbox" id="consell-guerra" onchange="commutarAndChangeSimpleSumari(this,'consellGuerra','consell-guerra-container')">
+				<div class="inline hidden" id="consell-guerra-container">
+					<select id="municipi-consell" onchange="changeSelectSumari(this,'municipiConsell','Municipi')">
+						<option>Barcelona</option>
+					</select>
+					<i class="material-icons md-18 link" title="editar" onclick="obrirPagina('municipis.php')">mode_edit</i>
+					<input type="date" id="data-consell-guerra" onchange="changeSimpleSumari(this,'dataConsellGuerra')" oninput="changeSimpleSumari(this,'dataConsellGuerra')">
+				</div>
+			</div>
+			<div class=""> <!--Penes-->
+				<label>Pena inicial</label>
+				<input type="text" placeholder="Pena inicial" id="pena-inicial" onchange="changeSimpleSumari(this,'penaInicial')">
+				<input type="date" id="data-pena" onchange="changeSimpleSumari(this,'dataPena')" oninput="changeSimpleSumari(this,'dataPena')">
+				<label class="left-sm">Commutació</label>
+				<i class="material-icons md-18 link" onclick="addElementSumari(this,'commutacions','commutacions',true)">add_circle</i>
+				<div class="inline-table" id="commutacions-container">
+					<div class="hidden" id="commutacions" exclusive="false">
+			    	<input type="text" title="Pena commutada" placeholder="Pena commutada" id="tipusCommutacio" onchange="changeSimpleGeneric(this,'tipusCommutacio','Commutacio')">
+		    		<input type="date" title="Data commutacio" id="dataCommutacio" onchange="changeSimpleGeneric(this,'dataCommutacio','Commutacio')" oninput="changeSimpleGeneric(this,'dataCommutacio','Commutacio')">
+			    	<i class="material-icons md-18 link" title="eliminar" onclick="removeElementSumari(this,'commutacions','Commutacio')">remove_circle</i>
+					</div>
+				</div>
+			</div>
+			<div class=""> <!--Llibertats-->
+				<div class="inline">
+					<label>Llibertat</label>
+					<i class="material-icons md-18 link" onclick="addElementSumari(this,'llibertats','llibertats',true)">add_circle</i>
+					<div class="inline-table" id="llibertats-container">
+						<div class="hidden" id="llibertats" exclusive="false">
+				    	<select value="1" onchange="changeSelectGeneric(this,'llibertat','Llibertat','SumariLlibertat')">
+				    		<option>Llibertat</option>
+				    	</select>
+				    	<i class="material-icons md-18 link" title="editar" onclick="obrirPagina('llibertats.php')">mode_edit</i>
+			    		<input type="date" title="Data llibertat" id="dataLlibertat" onchange="changeSimpleGeneric(this,'dataLLibertat','SumariLlibertat')" oninput="changeSimpleGeneric(this,'dataLLibertat','SumariLlibertat')">
+				    	<i class="material-icons md-18 link" title="eliminar" onclick="removeElementSumari(this,'llibertats','SumariLlibertat')">remove_circle</i>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div> <!--Execució-->
+				<label>Execució</label>
+				<input type="checkbox" id="hasExecucio" onchange="commutarAndChangeSimpleSumari(this,'hasExecucio','execucio-container')">
+				<div class="inline hidden execucio" id="execucio-container">
+					<select id="execucio" onchange="changeSelectGeneric(this,'execucio','Execucio','SumariExecucio')">
+						<option>Afusellament</option>
+					</select>
+					<i class="material-icons md-18 link" title="editar" onclick="obrirPagina('execucions.php')">mode_edit</i>
+					<select id="llocExecucio" onchange="changeSelectGeneric(this,'llocExecucio','LlocExecucio','SumariExecucio')">
+						<option>Camp de la Bota</option>
+					</select>
+					<i class="material-icons md-18 link" title="editar" onclick="obrirPagina('llocsexecucio.php')">mode_edit</i>
+					<input type="date" id="dataExecucio" onchange="changeSimpleGeneric(this,'dataExecucio','SumariExecucio')" oninput="changeSimpleGeneric(this,'dataExecucio','SumariExecucio')">
+				</div>
+			</div>
+			<div class="">
+				<label for="observacions-sumari">Observacions:</label>
+				<textarea class="observacions" id="observacions-sumari" onchange="changeSimpleSumari(this,'observacions')"></textarea>
+			</div>
+		</div>
+		<div class="container seccio rounded" id="seccio-informes">
+			<h3>Informes</h3>
+			<i class="material-icons link add" title="Afegir informe" onclick="addInforme(this, 'informe')">add_circle</i>
+			<div id="informes-container">
+				<div id="informe-container" class="peticio-informe" hidden>
+					<div class="">
+						<h4>Petició:</h4>
+						<input type="text" placeholder="Lloc" onchange="changeSimplePeticio(this,'lloc')">
+						<input type="date" onchange="changeSimplePeticio(this,'data')" oninput="changeSimplePeticio(this,'data')">
+						<label>Organisme:</label>
+			    	<select class="organisme" onchange="changeSelectPeticio(this,'organisme','Organisme')">
+			    		<option>Comitè</option>
+			    	</select>
+			    	<i class="material-icons md-18 link" title="editar" onclick="editarOpcions(this)">mode_edit</i>
+			    	<label>Font:</label>
+			    	<select class="font" onchange="changeSelectPeticio(this,'font','Font')">
+			    		<option>Ajuntament</option>
+			    	</select>
+			    	<i class="material-icons md-18 link" title="editar" onclick="editarOpcions(this)">mode_edit</i>
+			    	<label>Capsa:</label><input class="capsa" type="text" placeholder="00000" onchange="changeSimplePeticio(this,'capsa')">
+					</div>
+					<div class="">
+						<h4>Informe:</h4>
+						<input type="text" placeholder="Registre" onchange="changeSimpleInforme(this,'registre')">
+						<input type="date" onchange="changeSimpleInforme(this,'data')" oninput="changeSimpleInforme(this,'data')">
+						<label>Organisme:</label>
+			    	<select class="organisme" onchange="changeSelectInforme(this,'organisme','Organisme')">
+			    		<option>Comitè</option>
+			    	</select>
+			    	<i class="material-icons md-18 link" title="editar" onclick="editarOpcions(this)">mode_edit</i>
+			    	<label>Font:</label>
+			    	<select class="font" onchange="changeSelectInforme(this,'font','Font')">
+			    		<option>Ajuntament</option>
+			    	</select>
+			    	<i class="material-icons md-18 link" title="editar" onclick="editarOpcions(this)">mode_edit</i>
+			    	<label>Capsa:</label><input class="capsa" type="text" placeholder="00000" onchange="changeSimpleInforme(this,'capsa')">
+					</div>
+		    	<i class="material-icons link remove" title="Eliminar informe" onclick="removeElement(this,'peticionsInforme','PeticioInforme')">remove_circle</i>
+				</div>
+			</div>
+			<div class="">
+				<label for="observacions-informes">Observacions:</label>
+				<textarea class="observacions" id="observacions-informes" onchange="changeSimple(this,'observacionsInformes')"></textarea>
+			</div>
+		</div>
+		<!-- Optional JavaScript -->
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+		<script src="js/scripts.js"></script>
+		<script src="js/fitxa.js"></script>
+	</body>
+</html>

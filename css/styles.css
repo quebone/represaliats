@@ -1,0 +1,178 @@
+.material-icons.md-18 {
+	font-size: 18px;
+}
+
+.inline {
+	display: inline;
+}
+
+.inline-table {
+	display: inline-table;
+}
+
+.left-none {
+	margin-left: 0;
+}
+
+.left-sm {
+	margin-left: 1em;
+}
+
+.left-md {
+	margin-left: 2em;
+}
+
+.hidden {
+/*	visibility: hidden;*/
+	display: none;
+}
+
+.visible {
+	visibility: visible;
+}
+
+.relative {
+	position: relative;
+}
+
+.seccio {
+	background-color: lightgrey;
+	padding: 1em;
+	margin-top: 1em;
+}
+
+.observacions {
+	width: 100%;
+}
+
+input[type="date"] {
+	width: 9.5em;
+}
+
+input[type="number"] {
+	width: 4em;
+}
+
+input[type="text"].capsa {
+	width: 4em;
+}
+
+input[type="text"].nom {
+	width: 7em;
+}
+
+input[type="text"].cognoms {
+	width: 12em;
+}
+
+input[type="text"].municipi {
+	width: 10em;
+}
+
+label {
+/*	margin-right: 1em;*/
+}
+
+.peticio-informe {
+	background-color: lightsteelblue;
+	padding: .8em;
+	margin-bottom: .5em;
+	position: relative;
+}
+
+.link {
+	cursor: pointer;
+}
+
+td.link:hover {
+	background-color: lightgray;
+}
+
+.informe-container {
+	position: relative;
+}
+
+.seccio {
+	position: relative;
+}
+
+.add {
+	position: absolute;
+	top: .5em;
+	right: .5em;
+}
+
+.remove {
+	position: absolute;
+	top: .5em;
+	right: .5em;
+}
+
+.controls {
+	position: fixed;
+	top: 80px;
+	right:40px; 
+}
+
+#search_result {
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	height: 50vh;
+	background-color: white;
+	z-index: 1001;
+	opacity: .9;
+}
+
+.search_result .hidden {
+	top: 50vh;
+}
+
+.search_controls {
+/*	height: 30px;*/
+	width: 100%;
+	position: absolute;
+	background-color: #ddd;
+	padding: .3rem 3rem;
+	font-style: italic;
+}
+
+.search_controls i {
+	display: block;
+	position: absolute;
+	right: 40px;
+	top: 5px;
+}
+
+.search_content {
+	width: 100%;
+	margin-top: 30px;
+	position: relative;
+	padding: 1rem;
+	font-size: .9rem;
+	line-height: .9rem;
+}
+
+.search_content p {
+	margin-top: .5rem;
+	margin-bottom: .5rem;
+}
+
+.search_content p.name {
+	margin-top: .5rem;
+}
+
+.search_content p.data {
+	font-size: .8rem;
+}
+
+.search_content .highlight {
+	background-color: yellow;
+	font-style: italic;
+}
+
+.search_content .separator {
+	color: darkgrey;
+	font-style: italic;
+}
+

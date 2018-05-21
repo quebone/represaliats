@@ -1,0 +1,19 @@
+{
+    "name": "level-2/transphporm",
+    "description": "A new approach at templating",
+    "license": "BSD-2-Clause",
+    "homepage": "https://github.com/Level-2/Transphporm",
+    "keywords": ["template system"],
+    "authors": [
+    	{
+    		"name": "Tom Butler",
+    		"email": "tom@r.je"
+    	}
+    ],
+    "require": {
+        "php": ">=5.5.0"
+    },
+    "autoload": {
+    	"classmap": ["src/"]
+    }
+}

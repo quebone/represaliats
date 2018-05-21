@@ -1,0 +1,5 @@
+nav#main {content: template('navigation.html')};
+
+nav #nom_vistes {repeat: data(vistes)};
+nav #nom_vistes a {content: iteration(vistes.name) };
+nav #nom_vistes a:attr(href) {content: "vistes.php?id=", iteration(vistes.id) };

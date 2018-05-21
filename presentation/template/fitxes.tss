@@ -1,0 +1,8 @@
+@import 'navigation.tss';
+@import 'filtres.tss';
+
+//tbody tr {repeat: data(persones) };
+//tbody tr:attr(id) {content: "persona-", iteration(id) };
+//tbody tr td:nth-child(1) {content: iteration(cognoms), ", ", iteration(nom) };
+//tbody tr td:nth-child(2) {content: iteration(tipusSituacio.nom) };
+

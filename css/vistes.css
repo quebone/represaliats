@@ -1,0 +1,41 @@
+#fields input {
+	margin-right: .5em;
+}
+
+#fields label {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+li {
+	list-style: none;
+	line-height: 1;
+}
+
+#vista_header {
+	width: 100%;
+	background-color: lightgray;
+	padding: .5rem;
+	margin-bottom: 1rem;
+}
+
+#vista_header input {
+}
+
+#vista_header label {
+	margin-left: 2rem;
+}
+
+#vista_header select {
+	margin-right: 2rem;
+}
+
+#vista_header .controls {
+	position: static;
+	float: right;
+}

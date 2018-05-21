@@ -1,0 +1,129 @@
+@import 'navigation.tss';
+
+h1 {content: data(nom), " ", data(cognoms); }
+h1:attr(id) {content: data(id); }
+#nom:attr(value) {content: data(nom); }
+#cognoms:attr(value) {content: data(cognoms); }
+#malnom:attr(value) {content: data(malnom); }
+#edat:attr(value) {content: data(edat); }
+#lloc-naixement:attr(value) {content: data(llocNaixement.id); }
+#lloc-naixement option {repeat: data(municipis); }
+#lloc-naixement option:attr(value) {content: iteration(municipis.id); }
+#lloc-naixement option {content: iteration(municipis.nom); }
+#data-naixement:attr(value) {content: data(dataNaixement); }
+#carrer:attr(value) {content: data(carrer.id); }
+#carrer option {repeat: data(carrers); }
+#carrer option:attr(value) {content: iteration(carrers.id); }
+#carrer option {content: iteration(carrers.nomAnterior); }
+#num-carrer:attr(value) {content: data(numCarrer); }
+#parelles-container select option {repeat: data(persones); }
+#parelles-container select option:attr(value) {content: iteration(persones.id); }
+#parelles-container select option {content: iteration(persones.cognoms), ", ", iteration(persones.nom); }
+#fills-container select option {repeat: data(persones); }
+#fills-container select option:attr(value) {content: iteration(persones.id); }
+#fills-container select option {content: iteration(persones.cognoms), ", ", iteration(persones.nom); }
+#oficis-container select option {repeat: data(oficis); }
+#oficis-container select option:attr(value) {content: iteration(oficis.id); }
+#oficis-container select option {content: iteration(oficis.nom); }
+#lloc-mort:attr(value) {content: data(llocMort.id); }
+#lloc-mort option {repeat: data(municipis); }
+#lloc-mort option:attr(value) {content: iteration(municipis.id); }
+#lloc-mort option {content: iteration(municipis.nom); }
+#data-mort:attr(value) {content: data(dataMort); }
+#data-defuncio:attr(value) {content: data(dataDefuncio); }
+#observacions {content: data(observacions); }
+#tipus-situacio:attr(value) {content: data(tipusSituacio.id); }
+#tipus-situacio option {repeat: data(situacions); }
+#tipus-situacio option:attr(value) {content: iteration(situacions.id); }
+#tipus-situacio option {content: iteration(situacions.nom); }
+#cg:data[cg=true]:attr(checked) {content: true; }
+#fets-octubre:data[fetsOctubre=true]:attr(checked) {content: true; }
+#font-fets-octubre:attr(value) {content: data(fontFetsOctubre.id); }
+#font-fets-octubre option {repeat: data(fonts); }
+#font-fets-octubre option:attr(value) {content: iteration(fonts.id); }
+#font-fets-octubre option {content: iteration(fonts.nom); }
+#partits-container select option {repeat: data(partits); }
+#partits-container select option:attr(value) {content: iteration(partits.id); }
+#partits-container select option {content: iteration(partits.nom); }
+#sindicats-container select option {repeat: data(sindicats); }
+#sindicats-container select option:attr(value) {content: iteration(sindicats.id); }
+#sindicats-container select option {content: iteration(sindicats.nom); }
+select.comites option {repeat: data(comites); }
+select.comites option:attr(value) {content: iteration(comites.id); }
+select.comites option {content: iteration(comites.nom); }
+#causa:attr(value) {content: data(causa); }
+select.partits option {repeat: data(partits); }
+select.partits option:attr(value) {content: iteration(partits.id); }
+select.partits option {content: iteration(partits.nom); }
+select.sindicats option {repeat: data(sindicats); }
+select.sindicats option:attr(value) {content: iteration(sindicats.id); }
+select.sindicats option {content: iteration(sindicats.nom); }
+#exiliat:data[exiliat=true]:attr(checked) {content: true; }
+#trp:data[trp=true]:attr(checked) {content: true; }
+#data-trp:attr(value) {content: data(dataTrp); }
+#observacions-situacio {content: data(observacionsSituacio); }
+#desti-final:attr(value) {content: data(destiFinal.id); }
+#desti-final option {repeat: data(paisos); }
+#desti-final option:attr(value) {content: iteration(paisos.id); }
+#desti-final option {content: iteration(paisos.nom); }
+#lloc-desti-final:attr(value) {content: data(llocDestiFinal.id); }
+#lloc-desti-final option {repeat: data(municipis); }
+#lloc-desti-final option:attr(value) {content: iteration(municipis.id); }
+#lloc-desti-final option {content: iteration(municipis.nom); }
+#estat-militar:attr(value) {content: data(estatMilitar.id); }
+#estat-militar option {repeat: data(estatsMilitars); }
+#estat-militar option:attr(value) {content: iteration(estatsMilitars.id); }
+#estat-militar option {content: iteration(estatsMilitars.nom); }
+#desti-estat-militar:attr(value) {content: data(destiEstatMilitar.id); }
+#desti-estat-militar option {repeat: data(destinsEstatMilitar); }
+#desti-estat-militar option:attr(value) {content: iteration(destinsEstatMilitar.id); }
+#desti-estat-militar option {content: iteration(destinsEstatMilitar.nom); }
+#data-estat-militar:attr(value) {content: data(dataEstatMilitar); }
+#font-trp:attr(value) {content: data(fontTrp.id); }
+#font-trp option {repeat: data(fonts); }
+#font-trp option:attr(value) {content: iteration(fonts.id); }
+#font-trp option {content: iteration(fonts.nom); }
+#capsa-trp:attr(value) {content: data(capsaTrp); }
+#observacions-informes {content: data(observacionsInformes); }
+#sumari:attr(value) {content: data(sumari.id); }
+#has-sumari:data[hasSumari=true]:attr(checked) {content: true; }
+#num-sumari:attr(value) {content: data(sumari.numSumari); }
+#data-inici:attr(value) {content: data(sumari.dataInici); }
+#lloc-detencio:attr(value) {content: data(sumari.llocDetencio.id); }
+#lloc-detencio option {repeat: data(municipis); }
+#lloc-detencio option:attr(value) {content: iteration(municipis.id); }
+#lloc-detencio option {content: iteration(municipis.nom); }
+#data-detencio:attr(value) {content: data(sumari.dataDetencio); }
+#acusacio:attr(value) {content: data(sumari.acusacio.id); }
+#acusacio option {repeat: data(acusacions); }
+#acusacio option:attr(value) {content: iteration(acusacions.id); }
+#acusacio option {content: iteration(acusacions.tipus); }
+#consell-guerra:data[sumari.consellGuerra=true]:attr(checked) {content: true; }
+#municipi-consell:attr(value) {content: data(sumari.municipiConsell.id); }
+#municipi-consell option {repeat: data(municipis); }
+#municipi-consell option:attr(value) {content: iteration(municipis.id); }
+#municipi-consell option {content: iteration(municipis.nom); }
+#data-consell-guerra:attr(value) {content: data(sumari.dataConsellGuerra); }
+#pena-inicial:attr(value) {content: data(sumari.penaInicial); }
+#data-pena:attr(value) {content: data(sumari.dataPena); }
+#llibertats-container select option {repeat: data(llibertats); }
+#llibertats-container select option:attr(value) {content: iteration(llibertats.id); }
+#llibertats-container select option {content: iteration(llibertats.tipus); }
+#hasExecucio:data[sumari.hasExecucio=true]:attr(checked) {content: true; }
+.execucio:attr(value) {content: data(sumari.execucio.id); }
+#execucio:attr(value) {content: data(sumari.execucio.execucio.id); }
+#execucio option {repeat: data(execucions); }
+#execucio option:attr(value) {content: iteration(execucions.id); }
+#execucio option {content: iteration(execucions.tipus); }
+#llocExecucio:attr(value) {content: data(sumari.execucio.llocExecucio.id); }
+#llocExecucio option {repeat: data(llocsExecucio); }
+#llocExecucio option:attr(value) {content: iteration(llocsExecucio.id); }
+#llocExecucio option {content: iteration(llocsExecucio.nom); }
+#dataExecucio:attr(value) {content: data(sumari.execucio.data); }
+#observacions-sumari {content: data(sumari.observacions); }
+.organisme option {repeat: data(organismes); }
+.organisme option:attr(value) {content: iteration(organismes.id); }
+.organisme option {content: iteration(organismes.nom); }
+.font option {repeat: data(fonts); }
+.font option:attr(value) {content: iteration(fonts.id); }
+.font option {content: iteration(fonts.nom); }

@@ -1,0 +1,53 @@
+<h4>Filtres</h4>
+<div>
+	<select id="filter-presets" onchange="changePreset(this)">
+		<option value="1">Represaliats</option>
+	</select>
+	<i class="material-icons md-18 link" title="desar" onclick="addFilter(this)">add_circle</i>
+	<i class="material-icons md-18 link" title="eliminar" onclick="deleteFilter(this)">remove_circle</i>
+</div>
+<div><label for="filter-nom">Nom:</label></div>
+<div><input type="text" id="filter-nom" class="nom" fields="nom" onchange="applyFilters()"></div>
+<div><label for="filter-cognoms">Cognoms: </label></div>
+<div><input type="text" id="filter-cognoms" class="nom" fields="cognoms" onchange="applyFilters()"></div>
+<div><label for="filter-oficis">Ofici: </label></div>
+<div>
+	<select id="filter-oficis" class="" fields="oficis.id" onchange="applyFilters()">
+		<option value="1">Cisteller</option>
+	</select>
+</div>
+<div><label for="filter-tipusSituacio">Tipus: </label></div>
+<div>
+	<select id="filter-tipusSituacio" class="" fields="tipusSituacio.id" onchange="applyFilters()">
+		<option value="1">--</option>
+	</select>
+</div>
+<div><label for="filter-partits">Afiliació política: </label></div>
+<div>
+	<select id="filter-partits" class="" fields="partits.id" onchange="applyFilters()">
+		<option value="1">ERC</option>
+	</select>
+</div>
+<div><label for="filter-sindicats">Afiliació sindical: </label></div>
+<div>
+	<select id="filter-sindicats" class="" fields="sindicats.id" onchange="applyFilters()">
+		<option value="1">UR</option>
+	</select>
+</div>
+<div>
+	<input type="checkbox" id="filter-causa-general" fields="cg" onchange="applyFilters()"><label for="filter-causa-general">Causa general</label>
+</div>
+<div>
+	<input type="checkbox" id="filter-consell-guerra" fields="sumari.consellGuerra" onchange="applyFilters()"><label for="filter-consell-guerra">Consell de guerra</label>
+</div>
+<div>
+	<input type="checkbox" id="filter-fets-octubre" fields="fetsOctubre" onchange="applyFilters()"><label for="filter-fets-octubre">Fets d'octubre</label>
+</div>
+<div><label for="filter-execucio">Execució: </label></div>
+<div>
+	<select id="filter-execucio" class="" fields="sumari.execucio.execucio.id" onchange="applyFilters()">
+		<option value="1">Afusellat</option>
+	</select>
+</div>
+<div id="total">Total: <span></span></div>
+<script src="js/filtres.js"></script>

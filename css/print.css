@@ -1,0 +1,59 @@
+@page {
+	size: auto;
+	margin: 0mm;
+}
+
+nav {
+	display: none;
+}
+
+h1 {
+	font-size: 2em;
+}
+
+h3 {
+	font-size: 1.4em;
+}
+
+i {
+	display: none !important;
+}
+
+.container {
+	max-width: 100%;
+}
+
+::-webkit-input-placeholder { /* WebKit browsers */
+    color: transparent;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: transparent;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: transparent;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: transparent;
+}
+
+input {
+	border: 0;
+  overflow:visible;
+}
+
+select {
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	border: 0;
+}	
+
+textarea {
+	border: 0;
+  overflow:visible;
+}
+
+input.nom, input.cognoms {
+	display: none;
+}
+

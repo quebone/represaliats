@@ -1,0 +1,54 @@
+#filters {
+	font-size: 80%;
+	position: fixed;
+}
+
+#filters label {
+	margin: .5rem 0 0 0;
+}
+
+.add {
+	position: fixed;
+	top: 100px;
+	right:40px; 
+}
+
+#total {
+	margin-top: 1em;
+	font-size: 120%;
+	font-weight: bold;
+}
+
+.caps {
+	height: 30px;
+	background-color: white;
+	position: fixed;
+	left: 0px;
+	bottom: 0px;
+	width: 100%;
+	z-index: 1000;
+	text-align: center;
+}
+
+.caps a {
+	margin-left: 1rem;
+}
+
+.sidebar {
+	width: 13rem;
+	position: fixed;
+	z-index: 1000;
+}
+
+main {
+	margin-left: 13rem;
+	width: 100%;
+	max-width: initial;
+}
+
+main a {
+	display: block;
+	position: relative;
+	top: -100px;
+	visibility: hidden;
+}

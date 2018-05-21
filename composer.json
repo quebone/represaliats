@@ -1,0 +1,21 @@
+{
+	"require" : {
+		"php": ">=7.1.0",
+		"doctrine/orm" : "*",
+		"twbs/bootstrap": "4.0.0-beta",
+		"phpoffice/phpspreadsheet": "^1.1",
+		"Level-2/Transphporm": "1.1.1"
+	},
+	"autoload" : {
+		"psr-4" : {
+			"Represaliats\\" : "/",
+			"Represaliats\\Tests\\" : "tests",
+			"Represaliats\\Config\\" : "config",
+			"Represaliats\\Service\\" : "service",
+			"Represaliats\\Service\\Entities\\" : "service/entities",
+			"Represaliats\\Presentation\\Controller\\" : "presentation/controller",
+			"Represaliats\\Presentation\\View\\" : "presentation/view",
+			"Represaliats\\Presentation\\Model\\" : "presentation/model"
+		}
+	}
+}

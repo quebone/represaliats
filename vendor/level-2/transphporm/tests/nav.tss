@@ -1,0 +1,9 @@
+
+
+
+ul li {repeat: data(children); bind: iteration())}
+ul li:iteration[children]:after {content: template('nav.xml', '', 'nav.tss'); }
+
+ul li a:attr(href) {content: iteration(target);}
+ul li a {content: iteration(title);}
+

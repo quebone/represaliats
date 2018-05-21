@@ -1,0 +1,29 @@
+#filter-presets:attr(value) {content: data(filtres.id); }
+#filter-presets option {repeat: data(filtres); }
+#filter-presets option:attr(value) {content: iteration(filtres.id); }
+#filter-presets option {content: iteration(filtres.name); }
+
+#filter-tipusSituacio:attr(value) {content: data(tipusSituacio.id); }
+#filter-tipusSituacio option {repeat: data(tipusSituacio); }
+#filter-tipusSituacio option:attr(value) {content: iteration(tipusSituacio.id); }
+#filter-tipusSituacio option {content: iteration(tipusSituacio.nom); }
+
+#filter-partits:attr(value) {content: data(afiliacioPolitica.id); }
+#filter-partits option {repeat: data(afiliacioPolitica); }
+#filter-partits option:attr(value) {content: iteration(afiliacioPolitica.id); }
+#filter-partits option {content: iteration(afiliacioPolitica.nom); }
+
+#filter-sindicats:attr(value) {content: data(afiliacioSindical.id); }
+#filter-sindicats option {repeat: data(afiliacioSindical); }
+#filter-sindicats option:attr(value) {content: iteration(afiliacioSindical.id); }
+#filter-sindicats option {content: iteration(afiliacioSindical.nom); }
+
+#filter-oficis:attr(value) {content: data(oficis.id); }
+#filter-oficis option {repeat: data(oficis); }
+#filter-oficis option:attr(value) {content: iteration(oficis.id); }
+#filter-oficis option {content: iteration(oficis.nom); }
+
+#filter-execucio:attr(value) {content: data(execucions.id); }
+#filter-execucio option {repeat: data(execucions); }
+#filter-execucio option:attr(value) {content: iteration(execucions.id); }
+#filter-execucio option {content: iteration(execucions.tipus); }

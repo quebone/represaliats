@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ca">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="Carles" >
+		<title>Vistes</title>
+
+    <!-- Bootstrap CSS -->
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="css/starter-template.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/vistes.css">
+    <!-- Material icons font -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  </head>
+  <body>
+  	<nav id="main"></nav>
+    <div class="container relative">
+    	<div id="vista_header" class="rounded">
+	    	<input type="text" placeholder="Nom de la vista" id="nom_vista" required="true">
+				<i class="material-icons md-18 link" title="desar" onclick="addVista()">add_circle</i>
+				<i class="material-icons md-18 link" title="eliminar" onclick="deleteVista()">remove_circle</i>
+    		<label for="filter_preset">Filtre: </label>
+    		<select id="filter_preset" value="1">
+    			<option value="1">Tots</option>
+    		</select>
+		  	<div class="controls">
+   				<i class="material-icons md-24 link" id="print" title="imprimir" onclick="print()">print</i>
+   				<i class="material-icons md-24 link" id="spreadsheet" title="crear full de càlcul" onclick="xls()">insert_chart</i>
+		  	</div>
+    	</div>
+    	<div id="fields">
+    	<h2>Dades personals</h2>
+    		<ul>
+					<li><input type="checkbox" id="nom" fields="[cognoms,%, %,nom]"><label for="nom">Nom</label></li>
+					<li><input type="checkbox" id="malnom" fields="malnom"><label for="malnom">Malnom</label></li>
+					<li><input type="checkbox" id="edat" fields="edat"><label for="edat">Edat</label></li>
+					<li><input type="checkbox" id="dataNaixement" fields="dataNaixement"><label for="dataNaixement">Data naixement</label></li>
+					<li><input type="checkbox" id="adreca" fields="[carrer.nom,%, %,numCarrer]"><label for="adreca">Adreça</label></li>
+					<li><input type="checkbox" id="parella" fields="[parelles.nom,% %,parelles.cognoms]"><label for="parella">Parella</label></li>
+					<li><input type="checkbox" id="fills" fields="fills.nom"><label for="fills">Fills</label></li>
+					<li><input type="checkbox" id="oficis" fields="oficis.nom"><label for="oficis">Oficis</label></li>
+					<li><input type="checkbox" id="mort" fields="[llocMort.nom,%, %,dataMort]"><label for="mort">Mort</label></li>
+					<li><input type="checkbox" id="defuncio" fields="dataDefuncio"><label for="defuncio">Defunció</label></li>
+					<li><input type="checkbox" id="observacions" fields="observacions"><label for="observacions">Observacions</label></li>
+    		</ul>
+	    	<h2>Situació política i militar</h2>
+	    	<ul>
+					<li><input type="checkbox" id="cg" fields="cg"><label for="cg">Causa general</label></li>
+					<li><input type="checkbox" id="fetsOctubre" fields="fetsOctubre"><label for="fetsOctubre">Fets d'octubre</label></li>
+					<li><input type="checkbox" id="partits" fields="partits.nom"><label for="partits">Afiliació política</label></li>
+					<li><input type="checkbox" id="sindicats" fields="sindicats.nom"><label for="sindicats">Afiliació sindical</label></li>
+					<li><input type="checkbox" id="comites" fields="comites.comite.nom"><label for="comites">Comitès</label></li>
+					<li><input type="checkbox" id="ajuntament" fields="[datesAjuntament.dataInici,% a %,datesAjuntament.dataFi"><label for="ajuntament">Ajuntaments</label></li>
+					<li><input type="checkbox" id="destiFinal" fields="[destiFinal.nom,%, %,llocDestiFinal.nom]"><label for="destiFinal">Exili</label></li>
+					<li><input type="checkbox" id="estatMilitar" fields="[estatMilitar.nom,%, %,destiEstatMilitar.nom,%, %,dataEstatMilitar]"><label for="estatMilitar">Estat militar</label></li>
+					<li><input type="checkbox" id="trp" fields="[trp,%, %,dataTrp]"><label for="trp">TRP</label></li>
+					<li><input type="checkbox" id="observacionsSituacio" fields="observacionsSituacio"><label for="observacionsSituacio">Observacions</label></li>
+	    	</ul>
+	    	<h2>Sumari</h2>
+	    	<ul>
+					<li><input type="checkbox" id="numSumari" fields="sumari.numSumari"><label for="numSumari">Número</label></li>
+					<li><input type="checkbox" id="dataInici" fields="sumari.dataInici"><label for="dataInici">Data inici</label></li>
+					<li><input type="checkbox" id="detencio" fields="[sumari.llocDetencio.nom,%, %,sumari.dataDetencio]"><label for="detencio">Detenció</label></li>
+					<li><input type="checkbox" id="acusacio" fields="sumari.acusacio.tipus"><label for="acusacio">Acusació</label></li>
+					<li><input type="checkbox" id="consell" fields="[sumari.municipiConsell.nom,%, %,sumari.dataConsellGuerra]"><label for="consell">Consell de guerra</label></li>
+					<li><input type="checkbox" id="pena" fields="[sumari.penaInicial,%, %,sumari.dataPena]"><label for="pena">Pena inicial</label></li>
+					<li><input type="checkbox" id="commutacions" fields="[sumari.commutacions.tipusCommutacio,%, %,sumari.commutacions.dataCommutacio]"><label for="commutacions">Commutació</label></li>
+					<li><input type="checkbox" id="llibertats" fields="[sumari.llibertats.llibertat.tipus,%, %,sumari.llibertats.dataLlibertat]"><label for="llibertats">Llibertat</label></li>
+					<li><input type="checkbox" id="execucio" fields="[sumari.execucio.execucio.tipus,%, %,sumari.execucio.llocExecucio.nom,%, %,sumari.execucio.dataExecucio]"><label for="execucio">Execució</label></li>
+					<li><input type="checkbox" id="observacionsSumari" fields="sumari.observacions"><label for="observacionsSumari">Observacions</label></li>
+	    	</ul>
+	    	<h2>Informes</h2>
+	    	<ul>
+					<li><input type="checkbox" id="peticions" fields="[peticionsInforme.lloc,peticionsInforme.data,peticionsInforme.organisme.nom,peticionsInforme.informe.registre,peticionsInforme.informe.data,peticionsInforme.informe.organisme.nom]"><label for="peticions">Informes</label></li>
+					<li><input type="checkbox" id="observacionsInformes" fields="observacionsInformes"><label for="observacionsInformes">Observacions</label></li>
+	    	</ul>
+    	</div>
+		</div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+    <script src="js/scripts.js"></script>
+    <script src="js/vistes.js"></script>
+  </body>
+</html>

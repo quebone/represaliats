@@ -1,0 +1,5 @@
+@import 'navigation.tss';
+
+tbody tr {repeat: data(dades)};
+tbody tr:attr(id) {content: "estatMilitar-", iteration(id) };
+tbody tr td:nth-child(1) {content: iteration(nom) };

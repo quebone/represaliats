@@ -1,0 +1,66 @@
+   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="index.php">Represaliats </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="fitxes.php">Fitxes <span class="sr-only">(actual)</span></a>
+          </li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Taules</a>
+						<div class="dropdown-menu" aria-labelledby="dropdown01">
+							<a class="dropdown-item" href="paisos.php">Països</a>
+							<a class="dropdown-item" href="municipis.php">Poblacions</a>
+							<a class="dropdown-item" href="carrers.php">Carrers</a>
+							<a class="dropdown-item" href="oficis.php">Oficis</a>
+							<a class="dropdown-item" href="partits.php">Partits polítics</a>
+							<a class="dropdown-item" href="sindicats.php">Sindicats</a>
+							<a class="dropdown-item" href="comites.php">Comitès</a>
+							<a class="dropdown-item" href="organismes.php">Organismes</a>
+							<a class="dropdown-item" href="fonts.php">Fonts d'informació</a>
+							<a class="dropdown-item" href="estatsmilitars.php">Estats militars</a>
+							<a class="dropdown-item" href="destinsestatmilitar.php">Destins d'estat militar</a>
+							<a class="dropdown-item" href="tipussituacio.php">Tipus de situació</a>
+							<a class="dropdown-item" href="acusacions.php">Acusacions</a>
+							<a class="dropdown-item" href="llibertats.php">Llibertats</a>
+							<a class="dropdown-item" href="execucions.php">Execucions</a>
+							<a class="dropdown-item" href="llocsexecucio.php">Llocs d'Execució</a>
+						</div>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Vistes</a>
+						<div class="dropdown-menu" aria-labelledby="vistes">
+							<a class="dropdown-item" href="vistes.php">Afegir vista</a>
+					    <div class="dropdown-divider"></div>
+    							<div id="nom_vistes">
+								<a class="dropdown-item" href="vistes.php">Nom vista</a>
+							</div>
+						</div>
+					</li>
+        </ul>
+        <ul class="navbar-nav mt-2 mt-md-0">
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			    	<i class="material-icons md-24 link" title="eliminar" onclick="removeElementSumari(this,'commutacions','Commutacio')">person</i>
+			    	<span id="user"></span>
+						</a>
+						<div class="dropdown-menu" aria-labelledby="dropdown01">
+							<a class="dropdown-item" href="login.php">Sortir</a>
+						</div>
+					</li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+	        <input id="input_search" class="form-control mr-sm-2" type="text" placeholder="Cercar" aria-label="Cercar">
+          <button class="btn btn-outline-success my-2 my-sm-0" onclick="return search()">Cercar</button>
+        </form>
+      </div>
+    </nav>
+		<div id="search_result" class="hidden">
+			<div class="search_controls">
+				Resultats de la cerca
+  			<i class="material-icons md-18 link" title="amagar" onclick="hideSearch()">keyboard_arrow_down</i>
+			</div>
+			<div class="search_content"></div>
+		</div>

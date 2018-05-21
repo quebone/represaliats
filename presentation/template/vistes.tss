@@ -1,0 +1,9 @@
+@import 'navigation.tss';
+
+#nom_vista:attr(value) {content: data(vista.name);}
+#nom_vista:attr(id) {content: "vista-", data(vista.id);}
+
+#filter_preset:attr(value) {content: data(vista.filtre.id); }
+#filter_preset option {repeat: data(filtres);}
+#filter_preset option {content: iteration(filtres.name);}
+#filter_preset option:attr(value) {content: iteration(filtres.id);}

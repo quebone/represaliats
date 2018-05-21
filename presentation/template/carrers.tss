@@ -1,0 +1,8 @@
+@import 'navigation.tss';
+
+tbody tr {repeat: data(dades)};
+tbody tr:attr(id) {content: "carrer-", iteration(id) };
+tbody tr td:nth-child(1) {content: iteration(nomActual) };
+tbody tr td:nth-child(2) {content: iteration(nomComite) };
+tbody tr td:nth-child(3) {content: iteration(nomFranquista) };
+tbody tr td:nth-child(4) {content: iteration(nomAnterior) };
