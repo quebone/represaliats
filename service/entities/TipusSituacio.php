@@ -37,6 +37,10 @@ class TipusSituacio implements IEntity
 		];
 	}
 	
+	public function getValues(): array {
+	    return ["id" => $this->id, "data" => ["id" => $this->id]];
+	}
+	
 	public function __toString(): string {
 	    return json_encode($this);
 	}

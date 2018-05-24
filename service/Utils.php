@@ -63,10 +63,10 @@ class Utils
         $empty = true;
         foreach ($input as $value) {
             if (is_array($value)) {
-                $empty = Utils::isEmpty($value);
+                $empty = $empty && Utils::isEmpty($value);
             }
             else {
-                if ($value != null && count($value > 0) && strcmp($value, DEFAULTVALUE)) return false;
+                if ($value != null && is_string($value) && strlen($value) > 0 && strcmp($value, DEFAULTVALUE) != 0) return false;
             }
         }
         return $empty;

@@ -13,7 +13,7 @@ class Informe implements IEntity
 {
 	/** @Id @Column(type="integer") @GeneratedValue **/
 	private $id;
-	/** @Column(type="string", length=10, nullable=true) **/
+	/** @Column(type="string", length=20, nullable=true) **/
 	private $registre;
 	/** @Column(type="date", nullable=true) **/
 	private $data;

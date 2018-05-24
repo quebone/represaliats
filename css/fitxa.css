@@ -1,4 +1,39 @@
-input[type=text], input[type=number]
-{
+input[type=text], input[type=number] {
 	margin-left: .5em;
+	padding-left: .2rem;
+}
+
+h3 {
+	font-size: 1.5rem;
+/*	background-color: #ddd;*/
+	border-bottom: 2px solid white;
+	padding: .5rem;
+	padding-left: 1rem;
+	margin-bottom: 1rem;
+}
+
+h3::before {
+/*	content: "- ";*/
+}
+
+h3::after {
+/*	content: " -";*/
+}
+
+.titol-icon {
+	margin-right: 1rem;
+}
+
+textarea {
+	padding: .2rem .5rem;
+	height: 5rem;
+}
+
+.form-line {
+	margin-top: .2rem;
+	margin-bottom: .2rem;
+}
+
+label.titol {
+	font-weight: bold;
 }

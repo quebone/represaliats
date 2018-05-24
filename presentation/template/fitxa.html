@@ -16,11 +16,13 @@
 		<link rel="stylesheet" media="print" href="css/print.css">
 		<!-- Material icons font -->
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--offline detector-->
-    <script src="js/offline.min.js"></script>
-    <link href="css/offline-theme-slide.css" rel="stylesheet">
-    <link href="css/offline-language-catalan.css" rel="stylesheet">
-    <link href="css/offline-language-catalan-indicator.css" rel="stylesheet">
+		<!--Roboto font-->
+		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+		<!--offline detector-->
+	   <script src="js/offline.min.js"></script>
+	   <link href="css/offline-theme-slide.css" rel="stylesheet">
+	   <link href="css/offline-language-catalan.css" rel="stylesheet">
+	   <link href="css/offline-language-catalan-indicator.css" rel="stylesheet">
 	</head>
 	<body>
   	<nav id="main"></nav>
@@ -32,15 +34,15 @@
 			<h1>Nom i cognoms</h1>
 		</div>
 		<div class="container seccio rounded" id="dades-personals">
-			<h3>Dades personals</h3>
-			<div class=""> <!--Bàsiques-->
+			<h3><div class="inline titol-icon"><i class="material-icons">person</i></div>Dades personals</h3>
+			<div class="form-line"> <!--Bàsiques-->
 				<label for="nom">Nom</label><input class="nom" type="text" placeholder="Nom" id="nom" onchange="changeNom(this)" required="true">
 				<label class="left-sm" for="cognoms">Cognoms</label><input class="cognoms" type="text" placeholder="Cognoms" id="cognoms" onchange="changeNom(this)" required="true">
 				<label class="left-md" for="malnom">Malnom</label><input type="text" placeholder="Malnom" id="malnom" onchange="changeSimple(this,'malnom')">
 				<label class="left-md" for="edat">Edat</label><input type="number" placeholder="Edat" id="edat" onchange="changeSimple(this,'edat')">
 			</div>
-			<div class="">
-				<label>Naixement:</label>
+			<div class="form-line">
+				<label class="titol">Naixement:</label>
 				<label class="left-sm" for="lloc-naixement">lloc</label>
 				<select id="lloc-naixement" onchange="changeSelect(this,'llocNaixement','Municipi')">
 					<option>Artés</option>
@@ -56,8 +58,8 @@
 				<label class="left-sm" for="num-carrer">núm</label>
 				<input type="number" placeholder="Num" id="num-carrer" onchange="changeSimple(this,'numCarrer')">
 			</div>
-			<div class="">
-				<label>Mort:</label>
+			<div class="form-line">
+				<label class="titol">Mort:</label>
 				<label class="left-sm" for="lloc-mort">lloc</label>
 				<select id="lloc-mort" onchange="changeSelect(this,'llocMort','Municipi')">
 					<option>Artés</option>
@@ -68,7 +70,7 @@
 				<label class="left-sm" for="data-defuncio">data registre</label>
 				<input type="date" id="data-defuncio" onchange="changeSimple(this,'dataDefuncio')" oninput="changeSimple(this,'dataDefuncio')">
 			</div>
-			<div class=""> <!--Familiars-->
+			<div class="form-line"> <!--Familiars-->
 				<div class="inline"> <!--parella-->
 					<label for="parella">Parella</label>
 					<i class="material-icons md-18 link" onclick="addElement(this,'parelles','parelles',true)">add_circle</i>
@@ -95,7 +97,7 @@
 		  			</div>
 					</div>
 				</div>
-				<div class="inline left-md"> <!--oficis-->
+				<div class="form-line"> <!--oficis-->
 					<label>Professió</label><i class="material-icons md-18 link" onclick="addElement(this,'oficis','oficis',true)">add_circle</i>
 					<div class="inline-table" id="oficis-container" entity="Persona">
 						<div class="hidden" id="oficis">
@@ -108,19 +110,25 @@
 					</div>
 				</div>
 			</div>
-			<div class="">
+			<div class="form-line">
 				<label for="observacions">Observacions:</label>
 				<textarea class="observacions" id="observacions" onchange="changeSimple(this,'observacions')"></textarea>
 			</div>
 		</div>
 		<div class="container seccio rounded" id="situacio-politica">
-			<h3>Situació política i militar</h3>
-			<div class="">
+			<h3><div class="inline titol-icon"><i class="material-icons">how_to_vote</i></div>Situació política i militar</h3>
+			<div class="form-line"> <!--Tipus de situació-->
 				<label>Tipus</label>
-				<select id="tipus-situacio" value="1" onchange="changeSelect(this,'tipusSituacio','TipusSituacio')">
-					<option>Represaliat pel franquisme</option>
-				</select>
-				<i class="material-icons md-18 link" title="editar" onclick="obrirPagina('tipussituacio.php')">mode_edit</i>
+				<i class="material-icons md-18 link" onclick="addElement(this,'tipus-situacio','tipusSituacio',true)">add_circle</i>
+				<div class="inline-table" id="tipus-situacio-container">
+					<div class="hidden" id="tipus-situacio">
+				    	<select value="1" onchange="changeLinkedEntity(this,'tipusSituacio','TipusSituacio')">
+				    		<option></option>
+				    	</select>
+				    	<i class="material-icons md-18 link" title="editar" onclick="obrirPagina('tipussituacio.php')">mode_edit</i>
+				    	<i class="material-icons md-18 link" title="eliminar" onclick="removeElement(this,'tipusSituacio','TipusSituacio')">remove_circle</i>
+		  			</div>
+				</div>
 				<label class="left-sm" for="cg">Causa General</label>
 				<input type="checkbox" id="cg" onchange="changeSimple(this,'cg')">
 				<label class="left-sm">Sumari</label><input type="checkbox" id="has-sumari" onchange="commutarAndChangeSimple(this,'hasSumari','sumari','block')">
@@ -131,19 +139,20 @@
 				</select>
 				<i class="material-icons md-18 link" title="editar" onclick="obrirPagina('fonts.php')">mode_edit</i>
 			</div>
-			<div class=""> <!--Afiliacions-->
-				<label>Afiliació política</label>
+			<div class="form-line"> <!--Afiliacions-->
+				<label class="titol">Afiliacions:</label>
+				<label class="left-sm">política</label>
 				<i class="material-icons md-18 link" onclick="addElement(this,'partits','partits',true)">add_circle</i>
 				<div class="inline-table" id="partits-container">
 					<div class="hidden" id="partits">
-			    	<select value="1" onchange="changeLinkedEntity(this,'partits','Partit')">
-			    		<option></option>
-			    	</select>
-			    	<i class="material-icons md-18 link" title="editar" onclick="obrirPagina('partits.php')">mode_edit</i>
-			    	<i class="material-icons md-18 link" title="eliminar" onclick="removeElement(this,'partits','Partit')">remove_circle</i>
-	  			</div>
+				    	<select value="1" onchange="changeLinkedEntity(this,'partits','Partit')">
+				    		<option></option>
+				    	</select>
+				    	<i class="material-icons md-18 link" title="editar" onclick="obrirPagina('partits.php')">mode_edit</i>
+				    	<i class="material-icons md-18 link" title="eliminar" onclick="removeElement(this,'partits','Partit')">remove_circle</i>
+		  			</div>
 				</div>
-				<label class="left-sm">Afiliació sindical</label>
+				<label class="left-sm">sindical</label>
 				<i class="material-icons md-18 link" onclick="addElement(this,'sindicats','sindicats',true)">add_circle</i>
 				<div class="inline-table" id="sindicats-container">
 					<div class="hidden" id="sindicats">
@@ -155,11 +164,11 @@
 	  			</div>
 				</div>
 			</div>
-			<div class="">
+			<div class="form-line">
 <!--				<label>Comitè</label><input type="checkbox" id="comite" onchange="changeSimple(this,'comite')">-->
 				<div class=""> <!--Comitès-->
 					<div class="inline">
-						<label>Comitès</label>
+						<label class="titol">Comitès:</label>
 						<i class="material-icons md-18 link" onclick="addElement(this,'comites','comites',true)">add_circle</i>
 						<div class="inline-table" id="comites-container">
 							<div class="hidden" id="comites" exclusive="false">
@@ -182,8 +191,8 @@
 						</div>
 					</div>
 				</div>
-				<div class="">
-					<label>Ajuntament</label>
+				<div class="form-line">
+					<label class="titol">Ajuntaments:</label>
 					<i class="material-icons md-18 link" onclick="addElement(this,'dates-ajuntament','datesAjuntament',true)" id="add-dates-ajuntament">add_circle</i>
 					<div class="inline-table" id="dates-ajuntament-container">
 						<div id="datesAjuntament" class="hidden">
@@ -194,7 +203,7 @@
 					</div>
 				</div>
 			</div>
-			<div class=""> <!--Exili-->
+			<div class="form-line"> <!--Exili-->
 				<label>Exiliat</label><input type="checkbox" id="exiliat" onchange="commutarAndChangeSimple(this,'exiliat','exili')">
 				<div class="inline hidden" id="exili">
 					<label class="left-sm">Destí final</label>
@@ -230,15 +239,15 @@
 					<label class="left-sm">Capsa:</label><input class="capsa" type="text" id="capsa-trp" placeholder="00000" onchange="changeSimple(this,'capsaTrp')">
 				</div>
 			</div>
-			<div class="">
+			<div class="form-line">
 				<label for="observacions-situacio">Observacions:</label>
 				<textarea class="observacions" id="observacions-situacio" onchange="changeSimple(this,'observacionsSituacio')"></textarea>
 			</div>
 		</div>
 		<div class="container seccio rounded hidden" id="sumari">
-			<h3>Sumari</h3>
+			<h3><div class="inline titol-icon"><i class="material-icons">account_balance</i></div>Sumari</h3>
 			<a href="files/sumaris/sumari-00500.pdf" target="_blank" class="hidden"><i class="material-icons link add" title="Veure sumari">attachment</i></a>
-			<div class="">
+			<div class="form-line">
 				<label for="num-sumari">Número</label><input type="number" id="num-sumari" onchange="changeSimpleSumari(this,'numSumari')">
 				<label class="left-sm" for="data-inici">Data inici</label>
 				<input type="date" id="data-inici" onchange="changeSimpleSumari(this,'dataInici')" oninput="changeSimpleSumari(this,'dataInici')">
@@ -249,14 +258,14 @@
 				<i class="material-icons md-18 link" title="editar" onclick="obrirPagina('municipis.php')">mode_edit</i>
 				<input type="date" id="data-detencio" title="Data" onchange="changeSimpleSumari(this,'dataDetencio')" oninput="changeSimpleSumari(this,'dataDetencio')">
 			</div>
-			<div class=""> <!--Acusació-->
+			<div class="form-line"> <!--Acusació-->
 				<label for="acusacio">Acusació</label>
 				<select id="acusacio" onchange="changeSelectSumari(this,'acusacio','Acusacio')">
 					<option>Rebel·lió Militar</option>
 				</select>
 				<i class="material-icons md-18 link" title="editar" onclick="obrirPagina('acusacions.php')">mode_edit</i>
 			</div>
-			<div class=""> <!--Consell de guerra-->
+			<div class="form-line"> <!--Consell de guerra-->
 				<label>Consell de guerra</label>
 				<input type="checkbox" id="consell-guerra" onchange="commutarAndChangeSimpleSumari(this,'consellGuerra','consell-guerra-container')">
 				<div class="inline hidden" id="consell-guerra-container">
@@ -267,7 +276,7 @@
 					<input type="date" id="data-consell-guerra" onchange="changeSimpleSumari(this,'dataConsellGuerra')" oninput="changeSimpleSumari(this,'dataConsellGuerra')">
 				</div>
 			</div>
-			<div class=""> <!--Penes-->
+			<div class="form-line"> <!--Penes-->
 				<label>Pena inicial</label>
 				<input type="text" placeholder="Pena inicial" id="pena-inicial" onchange="changeSimpleSumari(this,'penaInicial')">
 				<input type="date" id="data-pena" onchange="changeSimpleSumari(this,'dataPena')" oninput="changeSimpleSumari(this,'dataPena')">
@@ -281,7 +290,7 @@
 					</div>
 				</div>
 			</div>
-			<div class=""> <!--Llibertats-->
+			<div class="form-line"> <!--Llibertats-->
 				<div class="inline">
 					<label>Llibertat</label>
 					<i class="material-icons md-18 link" onclick="addElementSumari(this,'llibertats','llibertats',true)">add_circle</i>
@@ -297,7 +306,7 @@
 					</div>
 				</div>
 			</div>
-			<div> <!--Execució-->
+			<div class="form-line"> <!--Execució-->
 				<label>Execució</label>
 				<input type="checkbox" id="hasExecucio" onchange="commutarAndChangeSimpleSumari(this,'hasExecucio','execucio-container')">
 				<div class="inline hidden execucio" id="execucio-container">
@@ -312,13 +321,13 @@
 					<input type="date" id="dataExecucio" onchange="changeSimpleGeneric(this,'dataExecucio','SumariExecucio')" oninput="changeSimpleGeneric(this,'dataExecucio','SumariExecucio')">
 				</div>
 			</div>
-			<div class="">
+			<div class="form-line">
 				<label for="observacions-sumari">Observacions:</label>
 				<textarea class="observacions" id="observacions-sumari" onchange="changeSimpleSumari(this,'observacions')"></textarea>
 			</div>
 		</div>
 		<div class="container seccio rounded" id="seccio-informes">
-			<h3>Informes</h3>
+			<h3><div class="inline titol-icon"><i class="material-icons">mail</i></div>Informes</h3>
 			<i class="material-icons link add" title="Afegir informe" onclick="addInforme(this, 'informe')">add_circle</i>
 			<div id="informes-container">
 				<div id="informe-container" class="peticio-informe" hidden>
@@ -362,6 +371,7 @@
 				<textarea class="observacions" id="observacions-informes" onchange="changeSimple(this,'observacionsInformes')"></textarea>
 			</div>
 		</div>
+		<div class="alert alert-info updated">Desat OK</div>
 		<!-- Optional JavaScript -->
 		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

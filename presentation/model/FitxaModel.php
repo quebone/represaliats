@@ -7,7 +7,7 @@ class FitxaModel extends Model
         'Dades personals' => [
             'Malnom' => 'malnom',
             'Edat' => 'edat',
-            'Data de naixement' => 'dataNaixement',
+            'Naixement' => ['dataNaixement', '%, %', 'llocNaixement.nom'],
             'Adreça' => ['carrer.nom', '%, %', 'numCarrer'],
             'Parelles' => ['parelles.nom', '% %', 'parelles.cognoms'],
             'Fills' => ['fills.nom', '% %', 'fills.cognoms'],
@@ -22,7 +22,7 @@ class FitxaModel extends Model
         'Situació política i militar' => [
             'Tipus' => 'tipusSituacio.nom',
             'Causa general' => 'cg',
-            'Fets d\'octubre' => 'fetsOctubre',
+            'Fets d\'octubre' => ['fetsOctubre', '%, %', 'fontFetsOctubre.nom'],
             'Afiliació política' => 'partits.nom',
             'Afiliació sindical' => 'sindicats.nom',
             'Comitès' => ['comites.comite.nom', '% , militant a %', 'comites.partit.nom', '%, %', 'comites.sindicat.nom'],

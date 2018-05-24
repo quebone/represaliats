@@ -145,6 +145,11 @@ class FitxaController extends Controller
 		return json_encode($this->service->getInstances("Persona", $id, "oficis"));
 	}
 	
+	public function getTipusSituacio($post) {
+	    $id = $post["id"];
+	    return json_encode($this->service->getInstances("Persona", $id, "tipusSituacio"));
+	}
+	
 	public function getPartits($post) {
 		$id = $post["id"];
 		return json_encode($this->service->getInstances("Persona", $id, "partits"));

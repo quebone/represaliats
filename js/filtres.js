@@ -87,7 +87,10 @@ function returnApplyFilters(msg) {
 		tr.appendChild(td);
 		td = document.createElement("TD");
 		td.setAttribute("name", "situacio");
-		td.innerHTML = instances[i].tipusSituacio.nom;
+		for (var j=0, l=instances[i].tipusSituacio.length; j<l; j++) {
+			td.innerHTML += instances[i].tipusSituacio[j].nom;
+			if (j<l-1) td.innerHTML += ", ";
+		}
 		tr.appendChild(td);
 		var icon = document.createElement("I");
 		icon.setAttribute("class", "material-icons md-18 link");

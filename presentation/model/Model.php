@@ -38,7 +38,7 @@ class Model
     }
     
     private function getLabel(string $field): ?string {
-        if ($field[0] == '%' && $field[count($field) - 1] == '%') {
+        if ($field[0] == '%' && $field[strlen($field) - 1] == '%') {
             return str_replace("%", "", $field);
         }
         return null;

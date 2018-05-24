@@ -3,6 +3,7 @@ window.onload = function () {
 	getSubseccions(getId(), "parelles", "parelles");
 	getSubseccions(getId(), "fills", "fills");
 	getSubseccions(getId(), "oficis", "oficis");
+	getSubseccions(getId(), "tipus-situacio", "tipusSituacio");
 	getSubseccions(getId(), "partits", "partits");
 	getSubseccions(getId(), "sindicats", "sindicats");
 	getSubseccions(getId(), "comites", "comites");
@@ -43,6 +44,7 @@ function changeSimpleReturn(msg, options) {
 	var elem = options[0];
 	var value = JSON.parse(msg);
 	if (value != null) setElemValue(elem, value);
+	showSuccesfulUpdate();
 }
 
 function changeNom(elem) {
@@ -168,6 +170,7 @@ function addElementReturn(msg, options) {
 			elem = elem.nextElementSibling;
 		}
 		seccio.appendChild(subseccio);
+		showSuccesfulUpdate();
 	}
 }
 
@@ -201,6 +204,7 @@ function removeElementReturn(msg, options) {
 		if (subseccio.hasAttribute("exclusive")) {
 			
 		}
+		showSuccesfulUpdate();
 	}
 }
 
@@ -260,6 +264,7 @@ function addInformeReturn(msg, options) {
 			}
 		}
 		seccio.appendChild(subseccio);
+		showSuccesfulUpdate();
 	}
 }
 

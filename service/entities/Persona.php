@@ -88,8 +88,9 @@ class Persona implements IEntity
 	 */
 	private $sindicats;
 	/**
-	 * Una persona té 1 situació (represaliat, indefinit, mort al front...)
+	 * Una persona té diverses situacions (represaliat, indefinit, mort al front...)
 	 * @ManyToMany(targetEntity="TipusSituacio")
+	 * @JoinTable(name="persones_tipusSituacio")
 	 */
 	private $tipusSituacio;
 	/** Causa General
@@ -462,14 +463,6 @@ class Persona implements IEntity
 		$this->observacions = $observacions;
 	}
 	
-	public function getTipusSituacio(): ?TipusSituacio {
-		return $this->tipusSituacio;
-	}
-	
-	public function setTipusSituacio(TipusSituacio $tipusSituacio) {
-		$this->tipusSituacio = $tipusSituacio;
-	}
-	
 	public function getHasSumari(): bool {
 		return $this->hasSumari;
 	}
@@ -584,6 +577,40 @@ class Persona implements IEntity
 		if ($this->sindicats->contains($sindicat)) {
 			$this->sindicats->removeElement($sindicat);
 		}
+	}
+	
+	public function getTipusSituacio(): Selectable {
+	    return $this->tipusSituacio;
+	}
+	
+	public function setTipusSituacio(ArrayCollection $tipusSituacio) {
+	    $this->tipusSituacio = $tipusSituacio;
+	}
+	
+	public function addTipusSituacio() {
+	    $dao = DAO::getInstance();
+	    $situacions = new ArrayCollection($dao->getByFilter("TipusSituacio"));
+	    $situacions->removeElement($this);
+	    foreach ($situacions as $situacio) {
+	        if (!$this->tipusSituacio->contains($situacio)) {
+	            $this->tipusSituacio->add($situacio);
+	            return $situacio;
+	        }
+	    }
+	    throw new \Exception("Col·lecció plena");
+	}
+	
+	public function changeTipusSituacio(TipusSituacio $old, TipusSituacio $new) {
+	    if ($this->tipusSituacio->contains($old) && !$this->tipusSituacio->contains($new)) {
+	        $this->removeTipusSituacio($old);
+	        $this->tipusSituacio->add($new);
+	    } else throw new \Exception("Tipus existent");
+	}
+	
+	public function removeTipusSituacio(TipusSituacio $tipusSituacio = null) {
+	    if ($this->tipusSituacio->contains($tipusSituacio)) {
+	        $this->tipusSituacio->removeElement($tipusSituacio);
+	    }
 	}
 	
 	public function getComites(): Selectable {
@@ -801,14 +828,14 @@ class Persona implements IEntity
 	}
 	
 	public function getResum(): array {
+	    $situacions = [];
+	    foreach ($this->tipusSituacio as $situacio)
+	        $situacions[] = $situacio->toArray();
 	    return [
 	        "id" => $this->getId(),
 	        "nom" => $this->getNom(),
 	        "cognoms" => $this->getCognoms(),
-	        "tipusSituacio" => [
-	            "id" => $this->getTipusSituacio()->getId(),
-	            "nom" => $this->getTipusSituacio()->getNom(),
-	        ]
+	        "tipusSituacio" => $situacions,
 	    ];
 	}
 	

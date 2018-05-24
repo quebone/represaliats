@@ -253,6 +253,9 @@ function setElemValue(elem, value) {
 	}
 }
 
+
+/** Cerques **/
+
 function search() {
 	var needle = getElemValue(document.querySelector('form input'));
 	if (needle.length > 0) {
@@ -265,6 +268,7 @@ function search() {
 }
 
 function searchReturn(msg) {
+	if (DEBUG) console.log(msg);
 	msg = JSON.parse(msg);
 	if (msg != false) {
 		if (DEBUG) console.log(msg);
@@ -278,3 +282,16 @@ function searchReturn(msg) {
 function hideSearch() {
 	document.getElementById('search_result').className = 'hidden';
 }
+
+
+/** Dades actualitzades correctament **/
+
+function showSuccesfulUpdate() {
+	var alert = document.querySelector('.updated');
+	alert.style['visibility'] = 'visible';
+	updatedInterval = setTimeout(hideSuccessfulUpdate, 1000, alert);
+}
+
+function hideSuccessfulUpdate(alert) {
+	alert.style['visibility'] = 'hidden';
+}	
