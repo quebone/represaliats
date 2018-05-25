@@ -48,10 +48,6 @@ h1:attr(id) {content: data(id); }
 #sindicats-container select option {repeat: data(sindicats); }
 #sindicats-container select option:attr(value) {content: iteration(sindicats.id); }
 #sindicats-container select option {content: iteration(sindicats.nom); }
-select.comites option {repeat: data(comites); }
-select.comites option:attr(value) {content: iteration(comites.id); }
-select.comites option {content: iteration(comites.nom); }
-#causa:attr(value) {content: data(causa); }
 select.partits option {repeat: data(partits); }
 select.partits option:attr(value) {content: iteration(partits.id); }
 select.partits option {content: iteration(partits.nom); }

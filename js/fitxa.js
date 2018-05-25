@@ -7,7 +7,7 @@ window.onload = function () {
 	getSubseccions(getId(), "partits", "partits");
 	getSubseccions(getId(), "sindicats", "sindicats");
 	getSubseccions(getId(), "comites", "comites");
-	getSubseccions(getId(), "dates-ajuntament", "datesAjuntament");
+	getSubseccions(getId(), "ajuntaments", "ajuntaments");
 	getSubseccions(getSumariId(), "llibertats", "llibertats");
 	getSubseccions(getSumariId(), "commutacions", "commutacions");
 	setAllSelected();

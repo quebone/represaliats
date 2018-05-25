@@ -18,7 +18,7 @@ function toArgs($input): array {
 }
 
 function test01() {
-    $_POST = toArgs('entityName=Informe&id=71&property=registre&value=Tampoc se sap&function=changeSimple&caller=Fitxa');
+    $_POST = toArgs('entityName=Persona&id=23&property=ajuntaments&function=addEntity&caller=Fitxa');
     require_once 'AjaxController.php';
 }
 

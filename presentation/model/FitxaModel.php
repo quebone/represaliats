@@ -9,7 +9,7 @@ class FitxaModel extends Model
             'Edat' => 'edat',
             'Naixement' => ['dataNaixement', '%, %', 'llocNaixement.nom'],
             'Adreça' => ['carrer.nom', '%, %', 'numCarrer'],
-            'Parelles' => ['parelles.nom', '% %', 'parelles.cognoms'],
+            'Cònjuge' => ['parelles.nom', '% %', 'parelles.cognoms'],
             'Fills' => ['fills.nom', '% %', 'fills.cognoms'],
             'Pares' => ['pares.nom', '% %', 'pares.cognoms'],
             'Germans' => ['germans.nom', '% %', 'germans.cognoms'],
@@ -25,15 +25,14 @@ class FitxaModel extends Model
             'Fets d\'octubre' => ['fetsOctubre', '%, %', 'fontFetsOctubre.nom'],
             'Afiliació política' => 'partits.nom',
             'Afiliació sindical' => 'sindicats.nom',
-            'Comitès' => ['comites.comite.nom', '% , militant a %', 'comites.partit.nom', '%, %', 'comites.sindicat.nom'],
-            'Ajuntament' => ['datesAjuntament.dataInici', '%  a %', 'datesAjuntament.dataFi'],
+            'Comitès' => ['comites.dataEntrada', '%  a %', 'comites.dataSortida', '%, %', 'comites.causa', '% , militant a %', 'comites.partit.nom', '%, %', 'comites.sindicat.nom'],
+            'Ajuntaments' => ['ajuntaments.dataEntrada', '%  a %', 'ajuntaments.dataSortida', '%, %', 'ajuntaments.causa'],
             'Exiliat' => 'exiliat',
             'Data Estat Militar' => 'dataEstatMilitar',
             'TRP' => 'trp',
             'Data TRP' => 'dataTrp',
             'Capsa TRP' => 'capsaTrp',
-            'Observacions situació política' => 'observacionsSituacio',
-            'Observacions' => 'observacionsInformes',
+            'Observacions' => 'observacionsSituacio',
         ],
         'Sumari' => [
             'Número' => 'sumari.numSumari',
@@ -46,7 +45,10 @@ class FitxaModel extends Model
             'Llibertats' => ['sumari.llibertats.llibertat.tipus', '%  el %', 'sumari.llibertats.dataLlibertat'],
             'Execucio' => ['sumari.execucio.execucio.tipus', '%, %', 'sumari.execucio.llocExecucio.nom', '%, %', 'sumari.execucio.dataExecucio'],
             'Observacions' => 'sumari.observacions',
-        ]
+        ],
+        'Informes' => [
+            'Observacions' => 'observacionsInformes',
+        ],
     ];
     
     public function __construct() {

@@ -116,15 +116,8 @@ class Persona implements IEntity
 	 * @OneToMany(targetEntity="MembreComite", mappedBy="persona", cascade="all")
 	 */
 	private $comites;
-	/**
-	 * Una persona pot haver estat a l'ajuntament en diversos espais de temps (ManyToMany with join table)
-	 * @ManyToMany(targetEntity="RangDates", cascade="all")
-	 * @JoinTable(name="persona_ajuntaments",
-	 * 		joinColumns={@JoinColumn(name="persona_id", referencedColumnName="id")},
-	 * 		inverseJoinColumns={@JoinColumn(name="rang_dates_id", referencedColumnName="id", unique=true)}
-	 * )
-	 */
-	private $datesAjuntament;
+	/** @OneToMany(targetEntity="Ajuntament", mappedBy="persona", cascade="all") **/
+	private $ajuntaments;
 	 /** @Column(type="boolean") **/
 	private $exiliat;
 	/** @ManyToOne(targetEntity="Pais") */
@@ -177,7 +170,7 @@ class Persona implements IEntity
 		$this->pares = new ArrayCollection();
 		$this->oficis = new ArrayCollection();
 		$this->peticionsInforme = new ArrayCollection();
-		$this->datesAjuntament = new ArrayCollection();
+		$this->ajuntaments = new ArrayCollection();
 		$this->comites = new ArrayCollection();
 		$this->cg = false;
 		$this->fetsOctubre = false;
@@ -643,25 +636,26 @@ class Persona implements IEntity
 	    }
 	}
 	
-	public function getDatesAjuntament(): Selectable {
-		return $this->datesAjuntament;
+	public function getAjuntaments(): Selectable {
+		return $this->ajuntaments;
 	}
 	
-	public function setDatesAjuntament(RangDates $datesAjuntament) {
-		$this->datesAjuntament = $datesAjuntament;
+	public function setAjuntaments(Ajuntament $ajuntament) {
+		$this->ajuntaments = $ajuntament;
 	}
 	
-	public function addDatesAjuntament() {
-		$instance = new RangDates();
-		$this->datesAjuntament->add($instance);
+	public function addAjuntaments() {
+		$instance = new Ajuntament();
+		$this->ajuntaments->add($instance);
+		$instance->setPersona($this);
 		return $instance;
 	}
 	
-	public function removeDatesAjuntament(RangDates $datesAjuntament = null) {
-		if ($this->datesAjuntament->contains($datesAjuntament)) {
-			$this->datesAjuntament->removeElement($datesAjuntament);
+	public function removeAjuntaments(Ajuntament $ajuntament = null) {
+		if ($this->ajuntaments->contains($ajuntament)) {
+			$this->ajuntaments->removeElement($ajuntament);
 			$dao = DAO::getInstance();
-			$dao->remove($datesAjuntament);
+			$dao->remove($ajuntament);
 		}
 	}
 	

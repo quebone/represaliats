@@ -4,16 +4,16 @@ namespace Represaliats\Service\Entities;
 use Represaliats\DAO;
 
 /**
- * Classe que modela la relació entre una persona i el comitè de que va formar part
+ * Classe que modela una participació a un ajuntament
  *
- * @Entity @Table(name="membre_comite")
+ * @Entity @Table(name="ajuntaments")
  */
 
-class MembreComite implements IEntity
+class Ajuntament implements IEntity
 {
     /** @Id @Column(type="integer") @GeneratedValue **/
     private $id;
-    /** @ManyToOne(targetEntity="Persona", inversedBy="comites") **/
+    /** @ManyToOne(targetEntity="Persona", inversedBy="ajuntaments") **/
     private $persona;
     /** @Column(type="date", nullable=true) **/
     private $dataEntrada;
@@ -21,15 +21,9 @@ class MembreComite implements IEntity
     private $dataSortida;
     /** @Column(type="string", length=50, nullable=true) **/
     private $causa;
-    /** @ManyToOne(targetEntity="Partit") **/
-    private $partit;
-    /** @ManyToOne(targetEntity="Sindicat") **/
-    private $sindicat;
     
     public function __construct() {
         $dao = DAO::getInstance();
-        $this->partit = $dao->getByFilter("Partit", ["nom" => DEFAULTVALUE])[0];
-        $this->sindicat = $dao->getByFilter("Sindicat", ["nom" => DEFAULTVALUE])[0];
     }
     
     public function getId(): int {
@@ -64,18 +58,6 @@ class MembreComite implements IEntity
         $this->dataSortida = $dataSortida;
     }
     
-    public function getComite(): Comite {
-      return $this->comite;
-    }
-    
-    public function setComite(Comite $comite) {
-        $this->comite = $comite;
-    }
-    
-    public function changeComite(Comite $old, Comite $new) {
-        $this->comite = $new;
-    }
-    
     public function getCausa() {
         return $this->causa;
     }
@@ -84,37 +66,11 @@ class MembreComite implements IEntity
         $this->causa = $causa;
     }
     
-    public function getPartit(): Partit {
-      return $this->partit;
-    }
-    
-    public function setPartit(Partit $partit) {
-        $this->partit = $partit;
-    }
-    
-    public function changePartit(Partit $old, Partit $new) {
-        $this->partit = $new;
-    }
-    
-    public function getSindicat(): Sindicat {
-      return $this->sindicat;
-    }
-    
-    public function setSindicat(Sindicat $sindicat) {
-        $this->sindicat = $sindicat;
-    }
-    
-    public function changeSindicat(Sindicat $old, Sindicat $new) {
-        $this->sindicat = $new;
-    }
-    
     public function toArray(): array {
         return ["id" => $this->id, "data" => [
             "dataEntrada" => $this->getDataEntrada(),
             "dataSortida" => $this->getDataSortida(),
             "causa" => $this->causa,
-            "partit" => $this->partit->getId(),
-            "sindicat" => $this->sindicat->getId(),
         ]];
     }
     
@@ -123,8 +79,6 @@ class MembreComite implements IEntity
             "dataEntrada" => $this->getDataEntrada(),
             "dataSortida" => $this->getDataSortida(),
             "causa" => $this->causa,
-            "partit" => $this->partit->getId(),
-            "sindicat" => $this->sindicat->getId(),
         ]];
     }
     
