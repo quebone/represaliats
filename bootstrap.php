@@ -20,8 +20,8 @@ define("LOCAL", true);
 if (defined("LOCAL")) {
 	$dbParams = array(
 			'driver'   => 'pdo_mysql',
-			'user'     => 'carles',
-			'password' => 'litus',
+			'user'     => 'represaliats',
+			'password' => 'HAYYU47tSghB3cVy',
 			'dbname'   => 'represaliats',
 			'charset' => 'utf8',
 	);
@@ -29,8 +29,8 @@ if (defined("LOCAL")) {
 	// remote
 	$dbParams = array(
 			'driver'   => 'pdo_mysql',
-			'user'     => 'carles',
-			'password' => '19liTus71',
+			'user'     => 'represaliats',
+			'password' => 'HAYYU47tSghB3cVy',
 			'dbname'   => 'represaliats',
 			'charset' => 'utf8',
 	);

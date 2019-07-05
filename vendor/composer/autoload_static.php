@@ -14,7 +14,6 @@ class ComposerStaticInitc9b386262c619fffc1b5839881b14c00
         'S' => 
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
-            'Symfony\\Component\\Debug\\' => 24,
             'Symfony\\Component\\Console\\' => 26,
         ),
         'R' => 
@@ -23,16 +22,19 @@ class ComposerStaticInitc9b386262c619fffc1b5839881b14c00
             'Represaliats\\Service\\Entities\\' => 30,
             'Represaliats\\Service\\' => 21,
             'Represaliats\\Presentation\\View\\' => 31,
+            'Represaliats\\Presentation\\Model\\' => 32,
             'Represaliats\\Presentation\\Controller\\' => 37,
             'Represaliats\\Config\\' => 20,
             'Represaliats\\' => 13,
         ),
         'P' => 
         array (
-            'Psr\\Log\\' => 8,
+            'Psr\\SimpleCache\\' => 16,
+            'PhpOffice\\PhpSpreadsheet\\' => 25,
         ),
         'D' => 
         array (
+            'Doctrine\\ORM\\' => 13,
             'Doctrine\\Instantiator\\' => 22,
             'Doctrine\\Common\\Inflector\\' => 26,
             'Doctrine\\Common\\Cache\\' => 22,
@@ -45,10 +47,6 @@ class ComposerStaticInitc9b386262c619fffc1b5839881b14c00
         'Symfony\\Polyfill\\Mbstring\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
-        ),
-        'Symfony\\Component\\Debug\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/debug',
         ),
         'Symfony\\Component\\Console\\' => 
         array (
@@ -70,6 +68,10 @@ class ComposerStaticInitc9b386262c619fffc1b5839881b14c00
         array (
             0 => __DIR__ . '/../..' . '/presentation/view',
         ),
+        'Represaliats\\Presentation\\Model\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/presentation/model',
+        ),
         'Represaliats\\Presentation\\Controller\\' => 
         array (
             0 => __DIR__ . '/../..' . '/presentation/controller',
@@ -82,9 +84,17 @@ class ComposerStaticInitc9b386262c619fffc1b5839881b14c00
         array (
             0 => '/',
         ),
-        'Psr\\Log\\' => 
+        'Psr\\SimpleCache\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
+            0 => __DIR__ . '/..' . '/psr/simple-cache/src',
+        ),
+        'PhpOffice\\PhpSpreadsheet\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet',
+        ),
+        'Doctrine\\ORM\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/orm/lib/Doctrine/ORM',
         ),
         'Doctrine\\Instantiator\\' => 
         array (
@@ -111,10 +121,6 @@ class ComposerStaticInitc9b386262c619fffc1b5839881b14c00
     public static $prefixesPsr0 = array (
         'D' => 
         array (
-            'Doctrine\\ORM\\' => 
-            array (
-                0 => __DIR__ . '/..' . '/doctrine/orm/lib',
-            ),
             'Doctrine\\DBAL\\' => 
             array (
                 0 => __DIR__ . '/..' . '/doctrine/dbal/lib',

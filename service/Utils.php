@@ -66,7 +66,7 @@ class Utils
                 $empty = $empty && Utils::isEmpty($value);
             }
             else {
-                if ($value != null && is_string($value) && strlen($value) > 0 && strcmp($value, DEFAULTVALUE) != 0) return false;
+                if ($value != null && (is_numeric($value) || (is_string($value) && strlen($value) > 0 && strcmp($value, DEFAULTVALUE) != 0))) return false;
             }
         }
         return $empty;
