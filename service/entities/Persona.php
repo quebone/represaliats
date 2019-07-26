@@ -804,6 +804,7 @@ class Persona implements IEntity
 		    "exiliat" => $this->exiliat,
 		    "destiFinal" => $this->destiFinal->toArray(),
 		    "llocDestiFinal" => $this->llocDestiFinal->toArray(),
+		    "estatMilitar" => $this->estatMilitar->toArray(),
 		    "destiEstatMilitar" => $this->destiEstatMilitar->toArray(),
 		    "dataEstatMilitar" => $this->getDataEstatMilitar(),
 		    "trp" => $this->trp,
