@@ -28,6 +28,7 @@ class FitxaModel extends Model
             'Comitès' => ['comites.dataEntrada', '%  a %', 'comites.dataSortida', '%, %', 'comites.causa', '% , militant a %', 'comites.partit.nom', '%, %', 'comites.sindicat.nom'],
             'Ajuntaments' => ['ajuntaments.dataEntrada', '%  a %', 'ajuntaments.dataSortida', '%, %', 'ajuntaments.causa'],
             'Exiliat' => ['exiliat', '%, a %', 'destiFinal.nom', '% (%', 'llocDestiFinal.nom', '%) %'],
+            'Estat Militar' => 'estatMilitar.nom',
             'Data Estat Militar' => 'dataEstatMilitar',
             'TRRP' => 'trp',
             'Data TRRP' => 'dataTrp',
