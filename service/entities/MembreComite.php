@@ -64,18 +64,6 @@ class MembreComite implements IEntity
         $this->dataSortida = $dataSortida;
     }
     
-    public function getComite(): Comite {
-      return $this->comite;
-    }
-    
-    public function setComite(Comite $comite) {
-        $this->comite = $comite;
-    }
-    
-    public function changeComite(Comite $old, Comite $new) {
-        $this->comite = $new;
-    }
-    
     public function getCausa() {
         return $this->causa;
     }
