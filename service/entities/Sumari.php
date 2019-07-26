@@ -49,7 +49,7 @@ class Sumari implements IEntity
 	private $hasExecucio;
 	/** @OneToOne(targetEntity="SumariExecucio", cascade="remove") **/
 	private $execucio;
-	/** @Column(type="string", length=1024, nullable=true) **/
+	/** @Column(type="string", length=2048, nullable=true) **/
 	private $observacions;
 	
 	public function __construct() {
